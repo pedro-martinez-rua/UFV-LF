@@ -1,0 +1,194 @@
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { ArrowLeft, Edit, MapPin, Calendar, CheckCircle, Clock } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { useToast } from "@/hooks/use-toast";
+import BottomNav from "@/components/BottomNav";
+import Footer from "@/components/Footer";
+import logoUFV from "@/assets/logo-ufv-new.png";
+
+const Profile = () => {
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  const [isEditing, setIsEditing] = useState(false);
+  const [name, setName] = useState("María García");
+  const [avatar, setAvatar] = useState("");
+
+  const userPosts = [
+    { id: 1, title: "AirPods Pro", status: "open", date: "Hace 2 horas", location: "Biblioteca" },
+    { id: 2, title: "Cartera negra", status: "contact", date: "Ayer", location: "Cafetería" },
+  ];
+
+  const closedCases = [
+    { id: 1, title: "Llaves del coche", date: "Hace 3 días", rating: 5 },
+    { id: 2, title: "Portátil MacBook", date: "Hace 1 semana", rating: 5 },
+  ];
+
+  const handleSaveProfile = () => {
+    setIsEditing(false);
+    toast({
+      title: "Perfil actualizado",
+      description: "Tus cambios se han guardado correctamente",
+    });
+  };
+
+  const handleLogout = () => {
+    toast({
+      title: "Sesión cerrada",
+      description: "Has cerrado sesión correctamente",
+    });
+    navigate("/login");
+  };
+
+  return (
+    <div className="min-h-screen bg-background pb-24">
+      {/* Header */}
+      <header className="gradient-primary text-primary-foreground p-6 shadow-elevated">
+        <div className="max-w-md mx-auto">
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <img src={logoUFV} alt="UFV Logo" className="h-8" />
+            <h1 className="text-2xl font-bold">Lost&Found UFV</h1>
+          </div>
+          <button
+            onClick={() => navigate("/dashboard")}
+            className="flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground transition-smooth"
+          >
+            <ArrowLeft className="w-5 h-5" />
+            Volver al inicio
+          </button>
+        </div>
+      </header>
+
+      <div className="max-w-md mx-auto px-6 -mt-8">
+        {/* Profile Card */}
+        <Card className="shadow-elevated bg-card border-0 p-6 mb-6">
+          <div className="flex flex-col items-center text-center mb-6">
+            <Avatar className="w-24 h-24 mb-4">
+              <AvatarImage src={avatar} />
+              <AvatarFallback className="bg-primary text-primary-foreground text-2xl">
+                {name.split(' ').map(n => n[0]).join('')}
+              </AvatarFallback>
+            </Avatar>
+            
+            {isEditing ? (
+              <div className="w-full space-y-4">
+                <div>
+                  <Label htmlFor="name">Nombre visible</Label>
+                  <Input
+                    id="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="text-center"
+                  />
+                </div>
+                <div className="flex gap-2">
+                  <Button onClick={handleSaveProfile} className="flex-1">
+                    Guardar
+                  </Button>
+                  <Button onClick={() => setIsEditing(false)} variant="outline" className="flex-1">
+                    Cancelar
+                  </Button>
+                </div>
+              </div>
+            ) : (
+              <>
+                <h2 className="text-xl font-bold text-foreground mb-1">{name}</h2>
+                <p className="text-sm text-muted-foreground mb-2">maria.garcia@ufv.es</p>
+                <Badge className="mb-4">Estudiante</Badge>
+                <Button onClick={() => setIsEditing(true)} variant="outline" className="gap-2">
+                  <Edit className="w-4 h-4" />
+                  Editar perfil
+                </Button>
+              </>
+            )}
+          </div>
+        </Card>
+
+        {/* My Posts */}
+        <div className="mb-6">
+          <h3 className="text-lg font-bold text-foreground mb-4">Mis publicaciones</h3>
+          <div className="space-y-3">
+            {userPosts.map((post) => (
+              <Card key={post.id} className="p-4 shadow-card border-0 transition-smooth hover:shadow-elevated cursor-pointer">
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <h4 className="font-semibold text-foreground">{post.title}</h4>
+                      {post.status === "open" ? (
+                        <Badge variant="outline" className="bg-success/10 text-success border-success">
+                          🟢 Abierto
+                        </Badge>
+                      ) : (
+                        <Badge variant="outline" className="bg-warning/10 text-warning border-warning">
+                          🟡 En contacto
+                        </Badge>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                      <div className="flex items-center gap-1">
+                        <MapPin className="w-3 h-3" />
+                        {post.location}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Calendar className="w-3 h-3" />
+                        {post.date}
+                      </div>
+                    </div>
+                  </div>
+                  <Button variant="ghost" size="sm">Ver</Button>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Closed Cases */}
+        <div className="mb-6">
+          <h3 className="text-lg font-bold text-foreground mb-4">Casos cerrados</h3>
+          <div className="space-y-3">
+            {closedCases.map((case_) => (
+              <Card key={case_.id} className="p-4 shadow-card border-0">
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="flex items-center gap-2 mb-2">
+                      <CheckCircle className="w-4 h-4 text-success" />
+                      <h4 className="font-semibold text-foreground">{case_.title}</h4>
+                    </div>
+                    <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                      <div className="flex items-center gap-1">
+                        <Clock className="w-3 h-3" />
+                        {case_.date}
+                      </div>
+                      <div className="flex items-center gap-1">
+                        {"⭐".repeat(case_.rating)}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Logout Button */}
+        <Button
+          onClick={handleLogout}
+          variant="destructive"
+          className="w-full h-12 font-semibold"
+        >
+          Cerrar sesión
+        </Button>
+      </div>
+
+      <Footer />
+      <BottomNav />
+    </div>
+  );
+};
+
+export default Profile;
