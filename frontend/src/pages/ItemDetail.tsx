@@ -80,7 +80,7 @@ const ItemDetail = () => {
             <Calendar className="w-5 h-5 text-primary" />
             <div>
               <p className="text-sm font-medium">Date</p>
-              <p className="text-sm text-muted-foreground">Tday, 10:30 AM</p>
+              <p className="text-sm text-muted-foreground">Today, 10:30 AM</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
@@ -97,10 +97,10 @@ const ItemDetail = () => {
           <div className="flex gap-3">
             <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
             <div>
-              <p className="font-medium text-sm mb-1">¿Is this yours?</p>
+              <p className="font-medium text-sm mb-1">Did you find it?</p>
               <p className="text-sm text-muted-foreground">
               By pressing "I've got it!", you can answer a few verification questions
-              and open a private chat with the person who found it.
+              and open a private chat with the person who lost it.
               </p>
             </div>
           </div>
@@ -164,10 +164,10 @@ const ItemDetail = () => {
             </div>
 
             <div>
-              <Label htmlFor="detail">Is ther a unique detail to identifiy it?</Label>
+              <Label htmlFor="detail">Is there a unique detail to identifiy it?</Label>
               <Textarea
                 id="detail"
-                placeholder="Ej: Tiene un arañazo en la tapa"
+                placeholder="Ej: It has a scratch on the left earbud"
                 value={claimData.detail}
                 onChange={(e) => setClaimData({ ...claimData, detail: e.target.value })}
                 rows={3}
@@ -187,7 +187,7 @@ const ItemDetail = () => {
                 <label htmlFor="photo" className="cursor-pointer flex flex-col items-center gap-2">
                   <Upload className="w-8 h-8 text-muted-foreground" />
                   <p className="text-sm text-muted-foreground">
-                    {claimData.photo ? claimData.photo.name : "Adjunta una foto para verificar"}
+                    {claimData.photo ? claimData.photo.name : "Add a photo to help verify"}
                   </p>
                 </label>
               </div>
@@ -199,14 +199,14 @@ const ItemDetail = () => {
                 className="flex-1"
                 onClick={() => setShowClaimModal(false)}
               >
-                Cancelar
+                Cancell
               </Button>
               <Button
                 className="flex-1"
                 onClick={handleSubmitClaim}
                 disabled={!claimData.color || !claimData.brand || !claimData.detail}
               >
-                Enviar
+                Send
               </Button>
             </div>
           </div>
