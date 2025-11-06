@@ -28,16 +28,35 @@ const PostLostItem = () => {
     date: "",
   });
 
-  const handleSubmit = () => {
+  
+const handleSubmit = async () => {
     if (formData.description.length < 20) {
       toast.error("La descripción debe tener al menos 20 caracteres");
       return;
     }
-    setStep(4);
-    setTimeout(() => {
-      navigate("/lost-board");
-      toast.success("¡Objeto publicado! Te notificaremos si alguien lo encuentra");
-    }, 2000);
+
+    try {
+      const response = await fetch("/api/lost-items", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to save lost item");
+      }
+
+      setStep(4);
+      setTimeout(() => {
+        navigate("/lost-board");
+        toast.success("¡Objeto publicado! Te notificaremos si alguien lo encuentra");
+      }, 2000);
+    } catch (error) {
+      console.error(error);
+      toast.error("Ha ocurrido un error al publicar tu objeto. Inténtalo de nuevo.");
+    }
   };
 
   const renderStep = () => {

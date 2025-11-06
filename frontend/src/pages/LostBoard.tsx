@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
@@ -50,6 +50,39 @@ const mockItems = [
 const LostBoard = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
+  const [items, setItems] = useState(mockItems);
+
+  useEffect(() => {
+    const loadItems = async () => {
+      try {
+        const response = await fetch("/api/lost-items");
+        if (!response.ok) {
+          throw new Error("Failed to load items");
+        }
+
+        const data = await response.json();
+
+        if (Array.isArray(data) && data.length > 0) {
+          const mapped = data.map((item, index) => ({
+            id: item.id ?? index + 1000,
+            title: item.title,
+            description: item.description,
+            category: item.category,
+            location: item.location,
+            date: item.date,
+            image: "📦",
+          }));
+
+          // New items first, then the static examples
+          setItems([...mapped, ...mockItems]);
+        }
+      } catch (error) {
+        console.error("Error loading lost items from API:", error);
+      }
+    };
+
+    loadItems();
+  }, []);
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -109,13 +142,13 @@ const LostBoard = () => {
           {/* Results Count */}
           <div className="mb-4">
             <p className="text-sm text-muted-foreground">
-              {mockItems.length} reported lost items
+              {items.length} reported lost items
             </p>
           </div>
 
           {/* Items List */}
           <div className="space-y-4">
-            {mockItems.map((item) => (
+            {items.map((item) => (
               <Card
                 key={item.id}
                 className="p-4 shadow-card border-0 transition-smooth hover:shadow-elevated cursor-pointer animate-fade-in"

@@ -6,10 +6,10 @@ const BottomNav = () => {
   const location = useLocation();
 
   const navItems = [
-    { icon: PackageSearch, label: "Inicio", path: "/dashboard" },
-    { icon: MessageCircle, label: "Mensajes", path: "/messages" },
-    { icon: Plus, label: "Publicar", path: "/post-lost-item" },
-    { icon: User, label: "Perfil", path: "/profile" },
+    { icon: PackageSearch, label: "Home", path: "/dashboard" },
+    { icon: MessageCircle, label: "Messages", path: "/messages" },
+    { icon: Plus, label: "Publish", path: "/post-lost-item" },
+    { icon: User, label: "Profile", path: "/profile" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
