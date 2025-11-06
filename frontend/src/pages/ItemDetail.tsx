@@ -44,7 +44,7 @@ const ItemDetail = () => {
           <button onClick={() => navigate('/lost-board')}>
             <ArrowLeft className="w-6 h-6 text-foreground" />
           </button>
-          <h1 className="font-semibold text-foreground">Detalle del objeto</h1>
+          <h1 className="font-semibold text-foreground">Object details</h1>
         </div>
       </header>
 
@@ -59,11 +59,11 @@ const ItemDetail = () => {
         <div className="space-y-2">
           <div className="flex items-start justify-between gap-4">
             <h1 className="text-3xl font-bold text-primary">AirPods Pro</h1>
-            <Badge variant="default">Electrónica</Badge>
+            <Badge variant="default">Electronics</Badge>
           </div>
           <p className="text-muted-foreground leading-relaxed">
-            AirPods Pro blancos con estuche de carga. Incluyen todas las gomas de diferentes tamaños. 
-            Última vez vistos en la segunda planta de la biblioteca, cerca de la zona de estudio.
+            White AirPods Pro with charging case. Includes all ear tips in different sizes.
+            Last seen on the second floor of the library, near the study area.
           </p>
         </div>
 
@@ -72,22 +72,22 @@ const ItemDetail = () => {
           <div className="flex items-center gap-3">
             <MapPin className="w-5 h-5 text-primary" />
             <div>
-              <p className="text-sm font-medium">Ubicación</p>
-              <p className="text-sm text-muted-foreground">Biblioteca - 2ª planta</p>
+              <p className="text-sm font-medium">Location</p>
+              <p className="text-sm text-muted-foreground">Library - 2º floor</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
             <Calendar className="w-5 h-5 text-primary" />
             <div>
-              <p className="text-sm font-medium">Fecha</p>
-              <p className="text-sm text-muted-foreground">Hoy, 10:30 AM</p>
+              <p className="text-sm font-medium">Date</p>
+              <p className="text-sm text-muted-foreground">Tday, 10:30 AM</p>
             </div>
           </div>
           <div className="flex items-center gap-3">
             <User className="w-5 h-5 text-primary" />
             <div>
-              <p className="text-sm font-medium">Publicado por</p>
-              <p className="text-sm text-muted-foreground">Estudiante UFV (verificado)</p>
+              <p className="text-sm font-medium">Published by</p>
+              <p className="text-sm text-muted-foreground">UFV student (verified)</p>
             </div>
           </div>
         </Card>
@@ -97,10 +97,10 @@ const ItemDetail = () => {
           <div className="flex gap-3">
             <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
             <div>
-              <p className="font-medium text-sm mb-1">¿Este objeto es tuyo?</p>
+              <p className="font-medium text-sm mb-1">¿Is this yours?</p>
               <p className="text-sm text-muted-foreground">
-                Al pulsar "I've got it!", podrás responder unas preguntas de verificación 
-                y abrir un chat privado con quien lo encontró.
+              By pressing "I've got it!", you can answer a few verification questions
+              and open a private chat with the person who found it.
               </p>
             </div>
           </div>
@@ -120,14 +120,14 @@ const ItemDetail = () => {
             className="w-full h-14 text-lg font-semibold gap-2"
           >
             <MessageCircle className="w-6 h-6" />
-            Hacer una pregunta
+            Make a question
           </Button>
         </div>
 
         {/* Safety Notice */}
         <div className="pt-4 text-center">
           <p className="text-xs text-muted-foreground">
-            🔒 Tus datos de contacto solo se compartirán si ambas partes aceptan conectar
+            🔒 Your contact details will only be shared if both parties agree to connect.
           </p>
         </div>
       </div>
@@ -136,15 +136,15 @@ const ItemDetail = () => {
       <Dialog open={showClaimModal} onOpenChange={setShowClaimModal}>
         <DialogContent className="max-w-md">
           <DialogHeader>
-            <DialogTitle>Verificar que es tuyo</DialogTitle>
+            <DialogTitle>Verify that it's yours</DialogTitle>
             <DialogDescription>
-              Responde estas preguntas para confirmar que el objeto te pertenece
+              Answer these questions to confirm that the item belongs to you.
             </DialogDescription>
           </DialogHeader>
 
           <div className="space-y-4">
             <div>
-              <Label htmlFor="color">¿De qué color es?</Label>
+              <Label htmlFor="color">What color is it?</Label>
               <Input
                 id="color"
                 placeholder="Ej: Blanco"
@@ -154,7 +154,7 @@ const ItemDetail = () => {
             </div>
 
             <div>
-              <Label htmlFor="brand">¿Qué marca es?</Label>
+              <Label htmlFor="brand">What brand is it?</Label>
               <Input
                 id="brand"
                 placeholder="Ej: Apple"
@@ -164,7 +164,7 @@ const ItemDetail = () => {
             </div>
 
             <div>
-              <Label htmlFor="detail">¿Algún detalle único que lo identifique?</Label>
+              <Label htmlFor="detail">Is ther a unique detail to identifiy it?</Label>
               <Textarea
                 id="detail"
                 placeholder="Ej: Tiene un arañazo en la tapa"
@@ -175,7 +175,7 @@ const ItemDetail = () => {
             </div>
 
             <div>
-              <Label htmlFor="photo">Foto del objeto (opcional)</Label>
+              <Label htmlFor="photo">Photo (optional)</Label>
               <div className="border-2 border-dashed border-border rounded-lg p-4 text-center cursor-pointer hover:border-primary transition-smooth">
                 <input
                   id="photo"

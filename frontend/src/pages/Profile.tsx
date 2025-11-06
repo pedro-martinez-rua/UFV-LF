@@ -16,31 +16,31 @@ const Profile = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const [isEditing, setIsEditing] = useState(false);
-  const [name, setName] = useState("María García");
+  const [name, setName] = useState("Maria Garcia");
   const [avatar, setAvatar] = useState("");
 
   const userPosts = [
-    { id: 1, title: "AirPods Pro", status: "open", date: "Hace 2 horas", location: "Biblioteca" },
-    { id: 2, title: "Cartera negra", status: "contact", date: "Ayer", location: "Cafetería" },
+    { id: 1, title: "AirPods Pro", status: "open", date: "2 hours ago", location: "Library" },
+    { id: 2, title: "Black Wallet", status: "contact", date: "Yesterday", location: "Cafeteria" },
   ];
 
   const closedCases = [
-    { id: 1, title: "Llaves del coche", date: "Hace 3 días", rating: 5 },
-    { id: 2, title: "Portátil MacBook", date: "Hace 1 semana", rating: 5 },
+    { id: 1, title: "Car Keys", date: "3 days ago", rating: 5 },
+    { id: 2, title: "MacBook Laptop", date: "1 week ago", rating: 5 },
   ];
 
   const handleSaveProfile = () => {
     setIsEditing(false);
     toast({
-      title: "Perfil actualizado",
-      description: "Tus cambios se han guardado correctamente",
+      title: "Profile updated",
+      description: "Your changes have been saved successfully",
     });
   };
 
   const handleLogout = () => {
     toast({
-      title: "Sesión cerrada",
-      description: "Has cerrado sesión correctamente",
+      title: "Logged out",
+      description: "You have logged out successfully",
     });
     navigate("/login");
   };
@@ -59,7 +59,7 @@ const Profile = () => {
             className="flex items-center gap-2 text-primary-foreground/80 hover:text-primary-foreground transition-smooth"
           >
             <ArrowLeft className="w-5 h-5" />
-            Volver al inicio
+            Back to home
           </button>
         </div>
       </header>
@@ -78,7 +78,7 @@ const Profile = () => {
             {isEditing ? (
               <div className="w-full space-y-4">
                 <div>
-                  <Label htmlFor="name">Nombre visible</Label>
+                  <Label htmlFor="name">Visible name</Label>
                   <Input
                     id="name"
                     value={name}
@@ -88,10 +88,10 @@ const Profile = () => {
                 </div>
                 <div className="flex gap-2">
                   <Button onClick={handleSaveProfile} className="flex-1">
-                    Guardar
+                    Save
                   </Button>
                   <Button onClick={() => setIsEditing(false)} variant="outline" className="flex-1">
-                    Cancelar
+                    Cancel
                   </Button>
                 </div>
               </div>
@@ -99,10 +99,10 @@ const Profile = () => {
               <>
                 <h2 className="text-xl font-bold text-foreground mb-1">{name}</h2>
                 <p className="text-sm text-muted-foreground mb-2">maria.garcia@ufv.es</p>
-                <Badge className="mb-4">Estudiante</Badge>
+                <Badge className="mb-4">Student</Badge>
                 <Button onClick={() => setIsEditing(true)} variant="outline" className="gap-2">
                   <Edit className="w-4 h-4" />
-                  Editar perfil
+                  Edit profile
                 </Button>
               </>
             )}
@@ -111,7 +111,7 @@ const Profile = () => {
 
         {/* My Posts */}
         <div className="mb-6">
-          <h3 className="text-lg font-bold text-foreground mb-4">Mis publicaciones</h3>
+          <h3 className="text-lg font-bold text-foreground mb-4">My posts</h3>
           <div className="space-y-3">
             {userPosts.map((post) => (
               <Card key={post.id} className="p-4 shadow-card border-0 transition-smooth hover:shadow-elevated cursor-pointer">
@@ -121,11 +121,11 @@ const Profile = () => {
                       <h4 className="font-semibold text-foreground">{post.title}</h4>
                       {post.status === "open" ? (
                         <Badge variant="outline" className="bg-success/10 text-success border-success">
-                          🟢 Abierto
+                          🟢 Open
                         </Badge>
                       ) : (
                         <Badge variant="outline" className="bg-warning/10 text-warning border-warning">
-                          🟡 En contacto
+                          🟡 In contact
                         </Badge>
                       )}
                     </div>
@@ -140,7 +140,7 @@ const Profile = () => {
                       </div>
                     </div>
                   </div>
-                  <Button variant="ghost" size="sm">Ver</Button>
+                  <Button variant="ghost" size="sm">View</Button>
                 </div>
               </Card>
             ))}
@@ -149,7 +149,7 @@ const Profile = () => {
 
         {/* Closed Cases */}
         <div className="mb-6">
-          <h3 className="text-lg font-bold text-foreground mb-4">Casos cerrados</h3>
+          <h3 className="text-lg font-bold text-foreground mb-4">Closed cases</h3>
           <div className="space-y-3">
             {closedCases.map((case_) => (
               <Card key={case_.id} className="p-4 shadow-card border-0">
@@ -181,7 +181,7 @@ const Profile = () => {
           variant="destructive"
           className="w-full h-12 font-semibold"
         >
-          Cerrar sesión
+          Log out
         </Button>
       </div>
 

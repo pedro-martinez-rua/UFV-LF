@@ -39,8 +39,8 @@ const Register = () => {
     
     if (!validateEmail(formData.email)) {
       toast({
-        title: "Email inválido",
-        description: "Debes usar tu email institucional UFV (@ufv.es o @ufv.edu.es)",
+        title: "Invalid email",
+        description: "You must use your institutional UFV email (@ufv.es or @ufv.edu.es)",
         variant: "destructive",
       });
       return;
@@ -48,8 +48,8 @@ const Register = () => {
 
     if (!validatePassword(formData.password)) {
       toast({
-        title: "Contraseña inválida",
-        description: "Debe tener mínimo 8 caracteres, 1 mayúscula, 1 número y 1 símbolo",
+        title: "Invalid password",
+        description: "It must have at least 8 characters, 1 uppercase letter, 1 number and 1 symbol",
         variant: "destructive",
       });
       return;
@@ -57,8 +57,8 @@ const Register = () => {
 
     if (formData.password !== formData.confirmPassword) {
       toast({
-        title: "Las contraseñas no coinciden",
-        description: "Por favor, verifica que ambas contraseñas sean iguales",
+        title: "Passwords do not match",
+        description: "Please make sure both passwords are the same",
         variant: "destructive",
       });
       return;
@@ -68,8 +68,8 @@ const Register = () => {
     
     setTimeout(() => {
       toast({
-        title: "¡Cuenta creada! 🤝",
-        description: "Tu cuenta se ha creado con éxito",
+        title: "Account created! 🤝",
+        description: "Your account has been successfully created",
       });
       navigate("/login");
     }, 1500);
@@ -87,20 +87,20 @@ const Register = () => {
       <div className="absolute inset-0 bg-primary/60 backdrop-blur-sm" />
       
       <div className="w-full max-w-md mx-auto relative z-10">
-        <button onClick={() => navigate("/login")} className="mb-6 text-white hover:text-white/80 transition-smooth">
+        <button onClick={() => navigate("/login")} className="mb-6 text-white hover:text.white/80 transition-smooth">
           <ArrowLeft className="w-6 h-6" />
         </button>
 
         <div className="text-center mb-8 animate-fade-in">
           <img src={logoUFV} alt="UFV Logo" className="h-20 mx-auto mb-4" />
-          <h1 className="text-3xl font-bold text-white mb-2">Crear cuenta UFV</h1>
-          <p className="text-white/90">Únete a la comunidad Lost&Found</p>
+          <h1 className="text-3xl font-bold text-white mb-2">Create UFV account</h1>
+          <p className="text-white/90">Join the Lost&Found community</p>
         </div>
 
         <div className="bg-card rounded-2xl shadow-elevated p-8 border-0">
           <form onSubmit={handleRegister} className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="name">Nombre completo</Label>
+              <Label htmlFor="name">Full name</Label>
               <Input
                 id="name"
                 value={formData.name}
@@ -111,45 +111,45 @@ const Register = () => {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="email">📧 Email institucional</Label>
+              <Label htmlFor="email">📧 Institutional email</Label>
               <Input
                 id="email"
                 type="email"
-                placeholder="nombre@ufv.es"
+                placeholder="name@ufv.es"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 className={`h-12 ${!validateEmail(formData.email) && formData.email ? 'border-destructive' : ''}`}
                 required
               />
               {!validateEmail(formData.email) && formData.email && (
-                <p className="text-xs text-destructive">Debe ser un email @ufv.es o @ufv.edu.es</p>
+                <p className="text-xs text-destructive">Must be an @ufv.es or @ufv.edu.es email</p>
               )}
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="role">Rol en la universidad</Label>
+              <Label htmlFor="role">Role at the university</Label>
               <Select
                 value={formData.role}
                 onValueChange={(value) => setFormData({ ...formData, role: value })}
                 required
               >
                 <SelectTrigger className="h-12">
-                  <SelectValue placeholder="Selecciona tu rol" />
+                  <SelectValue placeholder="Select your role" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="student">Estudiante</SelectItem>
-                  <SelectItem value="teacher">Profesor</SelectItem>
-                  <SelectItem value="staff">Personal de servicios</SelectItem>
+                  <SelectItem value="student">Student</SelectItem>
+                  <SelectItem value="teacher">Teacher</SelectItem>
+                  <SelectItem value="staff">Staff</SelectItem>
                 </SelectContent>
               </Select>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password">🔒 Contraseña</Label>
+              <Label htmlFor="password">🔒 Password</Label>
               <Input
                 id="password"
                 type="password"
-                placeholder="Mínimo 8 caracteres"
+                placeholder="Minimum 8 characters"
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                 className="h-12"
@@ -157,17 +157,17 @@ const Register = () => {
               />
               {!validatePassword(formData.password) && formData.password && (
                 <p className="text-xs text-destructive">
-                  Mín. 8 caracteres, 1 mayúscula, 1 número, 1 símbolo
+                  Min. 8 characters, 1 uppercase, 1 number, 1 symbol
                 </p>
               )}
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="confirmPassword">🔒 Confirmar contraseña</Label>
+              <Label htmlFor="confirmPassword">🔒 Confirm password</Label>
               <Input
                 id="confirmPassword"
                 type="password"
-                placeholder="Repite tu contraseña"
+                placeholder="Repeat your password"
                 value={formData.confirmPassword}
                 onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
                 className="h-12"
@@ -180,18 +180,18 @@ const Register = () => {
               className="w-full h-12 text-lg font-semibold"
               disabled={isLoading}
             >
-              {isLoading ? "Creando cuenta..." : "Crear cuenta"}
+              {isLoading ? "Creating account..." : "Create account"}
             </Button>
 
             <div className="text-center">
               <p className="text-sm text-muted-foreground">
-                ¿Ya tienes cuenta?{" "}
+                Already have an account?{" "}
                 <button
                   type="button"
                   onClick={() => navigate("/login")}
                   className="text-primary hover:underline"
                 >
-                  Inicia sesión
+                  Log in
                 </button>
               </p>
             </div>

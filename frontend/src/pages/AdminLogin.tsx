@@ -40,7 +40,7 @@ const AdminLogin = () => {
           className="mb-4 flex items-center gap-2 text-muted-foreground hover:text-foreground transition-smooth"
         >
           <ArrowLeft className="w-4 h-4" />
-          Volver al dashboard
+          Go back to Dashboard
         </button>
         
         <div className="flex flex-col items-center mb-6">
@@ -48,15 +48,15 @@ const AdminLogin = () => {
           <div className="w-16 h-16 rounded-full bg-primary flex items-center justify-center mb-4">
             <Shield className="w-8 h-8 text-primary-foreground" />
           </div>
-          <h1 className="text-2xl font-bold text-center">Modo Administrador</h1>
+          <h1 className="text-2xl font-bold text-center">Admin Mode</h1>
           <p className="text-sm text-muted-foreground text-center mt-2">
-            Acceso restringido solo para moderadores
+            Restricted acces, only for admins
           </p>
         </div>
 
         <form onSubmit={handleLogin} className="space-y-4">
           <div>
-            <Label htmlFor="username">Usuario</Label>
+            <Label htmlFor="username">username</Label>
             <Input
               id="username"
               value={username}
@@ -66,7 +66,7 @@ const AdminLogin = () => {
             />
           </div>
           <div>
-            <Label htmlFor="password">Contraseña</Label>
+            <Label htmlFor="password">password</Label>
             <Input
               id="password"
               type="password"
@@ -77,7 +77,7 @@ const AdminLogin = () => {
             />
           </div>
           <Button type="submit" className="w-full h-12 font-semibold">
-            Acceder al panel
+            Access the panel
           </Button>
         </form>
       </Card>

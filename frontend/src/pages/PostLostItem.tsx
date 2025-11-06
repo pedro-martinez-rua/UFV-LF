@@ -40,13 +40,13 @@ const PostLostItem = () => {
         return (
           <div className="space-y-6 animate-fade-in">
             <div>
-              <h2 className="text-2xl font-bold text-primary mb-2">¿Qué has perdido?</h2>
-              <p className="text-muted-foreground">Describe el objeto con el máximo detalle posible</p>
+              <h2 className="text-2xl font-bold text-primary mb-2">What did you lost?</h2>
+              <p className="text-muted-foreground">Describe the object with the maximum possible detail</p>
             </div>
 
             <div className="space-y-4">
               <div>
-                <Label htmlFor="title">Título del objeto</Label>
+                <Label htmlFor="title">Object name</Label>
                 <Input 
                   id="title"
                   placeholder="Ej: AirPods Pro blancos"
@@ -57,32 +57,32 @@ const PostLostItem = () => {
               </div>
 
               <div>
-                <Label htmlFor="description">Descripción detallada (mín. 20 caracteres)</Label>
+                <Label htmlFor="description">Detailed description (min 20 characters)</Label>
                 <Textarea 
                   id="description"
-                  placeholder="Incluye marca, color, características únicas, accesorios..."
+                  placeholder="Include brand, colour, characteristics, accesories..."
                   value={formData.description}
                   onChange={(e) => setFormData({...formData, description: e.target.value})}
                   className="min-h-32 resize-none"
                 />
                 <p className="text-xs text-muted-foreground mt-1">
-                  {formData.description.length}/20 caracteres
+                  {formData.description.length}/20 Characters
                 </p>
               </div>
 
               <div>
-                <Label htmlFor="category">Categoría</Label>
+                <Label htmlFor="category">Category</Label>
                 <Select value={formData.category} onValueChange={(value) => setFormData({...formData, category: value})}>
                   <SelectTrigger className="h-12">
-                    <SelectValue placeholder="Selecciona una categoría" />
+                    <SelectValue placeholder="Select a category" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="electronics">📱 Electrónica</SelectItem>
-                    <SelectItem value="clothing">👕 Ropa y accesorios</SelectItem>
-                    <SelectItem value="documents">📄 Documentos</SelectItem>
-                    <SelectItem value="keys">🔑 Llaves y tarjetas</SelectItem>
-                    <SelectItem value="bags">🎒 Mochilas y bolsas</SelectItem>
-                    <SelectItem value="other">📦 Otros</SelectItem>
+                    <SelectItem value="electronics">📱 Electronics</SelectItem>
+                    <SelectItem value="clothing">👕 Clothes and accesories</SelectItem>
+                    <SelectItem value="documents">📄 Documents</SelectItem>
+                    <SelectItem value="keys">🔑 Keys and cards</SelectItem>
+                    <SelectItem value="bags">🎒 Bags and backpacks</SelectItem>
+                    <SelectItem value="other">📦 Others</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -93,7 +93,7 @@ const PostLostItem = () => {
               onClick={() => setStep(2)}
               disabled={!formData.title || !formData.category}
             >
-              Continuar
+              Continue
             </Button>
           </div>
         );
@@ -102,31 +102,31 @@ const PostLostItem = () => {
         return (
           <div className="space-y-6 animate-fade-in">
             <div>
-              <h2 className="text-2xl font-bold text-primary mb-2">¿Dónde y cuándo?</h2>
-              <p className="text-muted-foreground">Ayúdanos a ubicar mejor tu objeto</p>
+              <h2 className="text-2xl font-bold text-primary mb-2">Where and when?</h2>
+              <p className="text-muted-foreground">Help us to ubicate better your object</p>
             </div>
 
             <div className="space-y-4">
               <div>
-                <Label htmlFor="location">Zona del campus</Label>
+                <Label htmlFor="location">Campus zone</Label>
                 <Select value={formData.location} onValueChange={(value) => setFormData({...formData, location: value})}>
                   <SelectTrigger className="h-12">
                     <SelectValue placeholder="¿Dónde crees que lo perdiste?" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="library">📚 Biblioteca</SelectItem>
-                    <SelectItem value="cafeteria">☕ Cafetería</SelectItem>
-                    <SelectItem value="building-a">🏢 Edificio A</SelectItem>
-                    <SelectItem value="building-b">🏢 Edificio B</SelectItem>
-                    <SelectItem value="gym">💪 Gimnasio</SelectItem>
+                    <SelectItem value="library">📚 Library</SelectItem>
+                    <SelectItem value="cafeteria">☕ Cafeteria</SelectItem>
+                    <SelectItem value="building-a">🏢 A Building</SelectItem>
+                    <SelectItem value="building-b">🏢 B Building</SelectItem>
+                    <SelectItem value="gym">💪 Gym</SelectItem>
                     <SelectItem value="parking">🚗 Parking</SelectItem>
-                    <SelectItem value="other">📍 Otra zona</SelectItem>
+                    <SelectItem value="other">📍 Other</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
 
               <div>
-                <Label htmlFor="date">Fecha aproximada</Label>
+                <Label htmlFor="date">Date</Label>
                 <Input 
                   id="date"
                   type="date"
@@ -150,7 +150,7 @@ const PostLostItem = () => {
                 onClick={() => setStep(3)}
                 disabled={!formData.location || !formData.date}
               >
-                Continuar
+                Continue
               </Button>
             </div>
           </div>
@@ -160,25 +160,25 @@ const PostLostItem = () => {
         return (
           <div className="space-y-6 animate-fade-in">
             <div>
-              <h2 className="text-2xl font-bold text-primary mb-2">Añade fotos (opcional)</h2>
-              <p className="text-muted-foreground">Las fotos aumentan un 70% las posibilidades de recuperación</p>
+              <h2 className="text-2xl font-bold text-primary mb-2">Add photos (optional)</h2>
+              <p className="text-muted-foreground">Photos add a 70% of possibilities of finding it</p>
             </div>
 
             <div className="grid grid-cols-2 gap-3">
               <Card className="aspect-square border-2 border-dashed border-border flex flex-col items-center justify-center gap-2 cursor-pointer hover:bg-muted/50 transition-smooth">
                 <Upload className="w-8 h-8 text-muted-foreground" />
-                <p className="text-xs text-muted-foreground">Subir imagen</p>
+                <p className="text-xs text-muted-foreground">Add image</p>
               </Card>
               <Card className="aspect-square border-2 border-dashed border-border flex flex-col items-center justify-center gap-2 cursor-pointer hover:bg-muted/50 transition-smooth">
                 <Camera className="w-8 h-8 text-muted-foreground" />
-                <p className="text-xs text-muted-foreground">Tomar foto</p>
+                <p className="text-xs text-muted-foreground">Take a photo</p>
               </Card>
             </div>
 
             <div className="bg-primary-lighter p-4 rounded-lg">
-              <p className="text-sm text-primary font-medium">💡 Consejo</p>
+              <p className="text-sm text-primary font-medium">💡 Hint</p>
               <p className="text-sm text-muted-foreground mt-1">
-                Incluye fotos desde diferentes ángulos y muestra detalles únicos que te ayuden a identificarlo
+                Add photos from different angles and show unique details that help you identify it
               </p>
             </div>
 
@@ -207,8 +207,8 @@ const PostLostItem = () => {
               <CheckCircle2 className="w-12 h-12 text-success" />
             </div>
             <div className="text-center">
-              <h2 className="text-2xl font-bold text-primary mb-2">¡Publicado con éxito!</h2>
-              <p className="text-muted-foreground">Tu objeto ya está en el tablón. Te avisaremos si alguien lo encuentra</p>
+              <h2 className="text-2xl font-bold text-primary mb-2">¡Published correctly!</h2>
+              <p className="text-muted-foreground">Your item is now on the board. We will notify you if someone finds it</p>
             </div>
           </div>
         );
@@ -227,9 +227,9 @@ const PostLostItem = () => {
             <ArrowLeft className="w-6 h-6 text-foreground" />
           </button>
           <div className="flex-1">
-            <h1 className="font-semibold text-foreground">Publicar objeto perdido</h1>
+            <h1 className="font-semibold text-foreground">Add a lost object</h1>
             {step < 4 && (
-              <p className="text-xs text-muted-foreground">Paso {step} de 3</p>
+              <p className="text-xs text-muted-foreground">Step {step} of 3</p>
             )}
           </div>
         </div>

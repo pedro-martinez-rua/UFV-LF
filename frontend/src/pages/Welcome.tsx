@@ -23,7 +23,7 @@ const Welcome = () => {
         <div className="max-w-md mx-auto text-center">
           <img src={logoUFV} alt="UFV Logo" className="h-16 mx-auto mb-4" />
           <h1 className="text-3xl font-bold text-white mb-2">Lost&Found</h1>
-          <p className="text-white/90 text-lg">Universidad Francisco de Vitoria</p>
+          <p className="text-white/90 text-lg">Francisco de Vitoria University</p>
         </div>
       </header>
 
@@ -35,11 +35,11 @@ const Welcome = () => {
               <PackageSearch className="w-10 h-10 text-primary" />
             </div>
             <h2 className="text-3xl font-bold text-foreground mb-4">
-              Encuentra lo que perdiste
+              Find what you lost
             </h2>
             <p className="text-muted-foreground text-lg leading-relaxed">
-              Sistema digital de objetos perdidos y encontrados de la UFV. 
-              Tu comunidad te ayuda a recuperar lo que es tuyo.
+              UFV&apos;s digital lost and found system. 
+              Your community helps you recover what is yours.
             </p>
           </div>
 
@@ -49,8 +49,8 @@ const Welcome = () => {
                 <span className="text-accent font-bold">✓</span>
               </div>
               <div>
-                <h3 className="font-semibold text-foreground mb-1">Seguro y confiable</h3>
-                <p className="text-sm text-muted-foreground">Solo accesible con credenciales UFV</p>
+                <h3 className="font-semibold text-foreground mb-1">Safe and reliable</h3>
+                <p className="text-sm text-muted-foreground">Only accessible with UFV credentials</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
@@ -58,8 +58,8 @@ const Welcome = () => {
                 <span className="text-accent font-bold">✓</span>
               </div>
               <div>
-                <h3 className="font-semibold text-foreground mb-1">Rápido y fácil</h3>
-                <p className="text-sm text-muted-foreground">Publica y busca objetos en segundos</p>
+                <h3 className="font-semibold text-foreground mb-1">Fast and easy</h3>
+                <p className="text-sm text-muted-foreground">Post and search for items in seconds</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
@@ -67,8 +67,8 @@ const Welcome = () => {
                 <span className="text-accent font-bold">✓</span>
               </div>
               <div>
-                <h3 className="font-semibold text-foreground mb-1">Comunidad activa</h3>
-                <p className="text-sm text-muted-foreground">Estudiantes y personal ayudándose entre sí</p>
+                <h3 className="font-semibold text-foreground mb-1">Active community</h3>
+                <p className="text-sm text-muted-foreground">Students and staff helping each other</p>
               </div>
             </div>
           </div>
@@ -77,7 +77,7 @@ const Welcome = () => {
             className="w-full h-14 text-lg font-semibold"
             onClick={() => navigate('/login')}
           >
-            Acceder con credenciales UFV
+            Log in with UFV credentials
           </Button>
         </div>
       </main>

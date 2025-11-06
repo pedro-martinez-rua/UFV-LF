@@ -8,41 +8,42 @@ import { useNavigate } from "react-router-dom";
 import BottomNav from "@/components/BottomNav";
 import Footer from "@/components/Footer";
 
-const mockItems = [
+const mockItems = 
+[
   {
     id: 1,
     title: "AirPods Pro",
-    description: "AirPods Pro blancos con estuche de carga. Perdidos en la biblioteca",
-    category: "Electrónica",
-    location: "Biblioteca",
-    date: "Hoy, 10:30",
+    description: "White AirPods Pro with charging case. Lost in the library",
+    category: "Electronics",
+    location: "Library",
+    date: "Today, 10:30",
     image: "📱",
   },
   {
     id: 2,
-    title: "Cartera negra",
-    description: "Cartera de cuero negro con DNI y tarjetas. Vista por última vez en cafetería",
-    category: "Documentos",
-    location: "Cafetería",
-    date: "Ayer, 14:00",
+    title: "Black Wallet",
+    description: "Black leather wallet with ID and cards. Last seen in the cafeteria",
+    category: "Documents",
+    location: "Cafeteria",
+    date: "Yesterday, 14:00",
     image: "👛",
   },
   {
     id: 3,
-    title: "Portátil MacBook",
-    description: "MacBook Pro 14\" gris espacial con funda azul",
-    category: "Electrónica",
-    location: "Edificio A",
-    date: "Hace 2 días",
+    title: "MacBook Laptop",
+    description: "Space gray 14\" MacBook Pro with blue case",
+    category: "Electronics",
+    location: "Building A",
+    date: "2 days ago",
     image: "💻",
   },
   {
     id: 4,
-    title: "Llaves del coche",
-    description: "Llavero con llaves Toyota y un USB rojo",
-    category: "Llaves",
-    location: "Parking",
-    date: "Hace 3 días",
+    title: "Car Keys",
+    description: "Keychain with Toyota keys and a red USB",
+    category: "Keys",
+    location: "Parking lot",
+    date: "3 days ago",
     image: "🔑",
   },
 ];
@@ -68,7 +69,7 @@ const LostBoard = () => {
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
               <Input 
-                placeholder="Buscar objetos..."
+                placeholder="Search objects..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10 h-12"
@@ -85,19 +86,19 @@ const LostBoard = () => {
       <div className="max-w-md mx-auto px-4 py-4">
         <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
           <Badge variant="default" className="px-4 py-2 cursor-pointer whitespace-nowrap">
-            Todos
+            All
           </Badge>
           <Badge variant="outline" className="px-4 py-2 cursor-pointer whitespace-nowrap">
-            📱 Electrónica
+            📱 Electronics
           </Badge>
           <Badge variant="outline" className="px-4 py-2 cursor-pointer whitespace-nowrap">
-            📄 Documentos
+            📄 Documents
           </Badge>
           <Badge variant="outline" className="px-4 py-2 cursor-pointer whitespace-nowrap">
-            🔑 Llaves
+            🔑 Keys
           </Badge>
           <Badge variant="outline" className="px-4 py-2 cursor-pointer whitespace-nowrap">
-            👕 Ropa
+            👕 Clothes
           </Badge>
         </div>
       </div>
@@ -105,7 +106,7 @@ const LostBoard = () => {
       {/* Results Count */}
       <div className="max-w-md mx-auto px-4 pb-4">
         <p className="text-sm text-muted-foreground">
-          {mockItems.length} objetos encontrados
+          {mockItems.length} Founded items
         </p>
       </div>
 

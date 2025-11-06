@@ -34,8 +34,8 @@ const Login = () => {
     
     if (!validateEmail(email)) {
       toast({
-        title: "Email inválido",
-        description: "Debes usar tu email institucional UFV (@ufv.es o @ufv.edu.es)",
+        title: "Invalid Email",
+        description: "You must use your institutional UFV email(@ufv.es o @ufv.edu.es)",
         variant: "destructive",
       });
       return;
@@ -43,8 +43,8 @@ const Login = () => {
 
     if (!validatePassword(password)) {
       toast({
-        title: "Contraseña inválida",
-        description: "Debe tener mínimo 8 caracteres, 1 mayúscula, 1 número y 1 símbolo",
+        title: "Invalid Password",
+        description: "It must have a minimum of 8 characters, 1 uppercase letter, 1 number, and 1 symbol.",
         variant: "destructive",
       });
       return;
@@ -55,8 +55,8 @@ const Login = () => {
     // Simular autenticación
     setTimeout(() => {
       toast({
-        title: "¡Bienvenido a Lost&Found UFV!",
-        description: "Has iniciado sesión correctamente",
+        title: "Welcome to Lost&Found UFV!",
+        description: "You have log in succesfully",
       });
       navigate("/dashboard");
     }, 1500);
@@ -83,14 +83,14 @@ const Login = () => {
       {/* Formulario de Login */}
       <div className="w-full max-w-md relative z-10">
         <div className="bg-card rounded-2xl shadow-elevated p-8 border-0">
-          <h2 className="text-2xl font-bold text-foreground mb-2">Iniciar sesión</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-2">Log in</h2>
           <p className="text-muted-foreground mb-6">
-            Accede con tus credenciales UFV para ayudar y recuperar objetos en tu campus
+            Acces with your UFV credentials to help and recover items on your campus
           </p>
 
           <form onSubmit={handleLogin} className="space-y-6">
             <div className="space-y-2">
-              <Label htmlFor="email">📧 Email institucional</Label>
+              <Label htmlFor="email">📧 Institutional email</Label>
               <Input
                 id="email"
                 type="email"
@@ -101,16 +101,16 @@ const Login = () => {
                 required
               />
               {!validateEmail(email) && email && (
-                <p className="text-xs text-destructive">Debe ser un email @ufv.es o @ufv.edu.es</p>
+                <p className="text-xs text-destructive">It has to be an institutional email: @ufv.es o @ufv.edu.es</p>
               )}
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="password">🔒 Contraseña</Label>
+              <Label htmlFor="password">🔒 Password</Label>
               <Input
                 id="password"
                 type="password"
-                placeholder="Mínimo 8 caracteres"
+                placeholder="Minumum 8 characters"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="h-12"
@@ -118,7 +118,7 @@ const Login = () => {
               />
               {!validatePassword(password) && password && (
                 <p className="text-xs text-destructive">
-                  Mín. 8 caracteres, 1 mayúscula, 1 número, 1 símbolo
+                  Minimum. 8 characters, 1 upper case, 1 number, 1 simbol
                 </p>
               )}
             </div>
@@ -133,7 +133,7 @@ const Login = () => {
                 htmlFor="remember"
                 className="text-sm text-muted-foreground cursor-pointer"
               >
-                Recordar sesión
+                🔒 Remember me
               </label>
             </div>
 
@@ -142,7 +142,7 @@ const Login = () => {
               className="w-full h-12 text-lg font-semibold"
               disabled={isLoading}
             >
-              {isLoading ? "Iniciando sesión..." : "🔵 Iniciar sesión"}
+              {isLoading ? "Login in..." : "🔵 Log in"}
             </Button>
 
             <div className="space-y-3 text-center">
@@ -152,25 +152,25 @@ const Login = () => {
                 className="w-full h-12"
                 onClick={() => navigate("/register")}
               >
-                ⚪ Crear cuenta UFV
+                ⚪ Create account UFV
               </Button>
               
               <button
                 type="button"
                 className="text-sm text-primary hover:underline"
                 onClick={() => toast({
-                  title: "Recuperar contraseña",
-                  description: "Contacta con el servicio de IT de UFV para recuperar tu contraseña",
+                  title: "Recover your password",
+                  description: "Contact with UFV IT to recover your password.",
                 })}
               >
-                🔗 ¿Olvidaste tu contraseña?
+                🔗 Did you forget your password?
               </button>
             </div>
           </form>
         </div>
 
         <p className="text-center text-xs text-white mt-6">
-          Al iniciar sesión, aceptas los términos de uso del sistema Lost&Found UFV
+          when logging in, you agree to the terms of use of the Lost&Found UFV system
         </p>
       </div>
     </div>

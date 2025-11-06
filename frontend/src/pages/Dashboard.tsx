@@ -44,11 +44,11 @@ const Dashboard = () => {
           <div className="grid grid-cols-2 gap-3">
             <div className="bg-primary-foreground/10 rounded-xl p-4 backdrop-blur-sm">
               <p className="text-2xl font-bold">47</p>
-              <p className="text-sm text-primary-foreground/80">Objetos encontrados hoy</p>
+              <p className="text-sm text-primary-foreground/80">Objects found today</p>
             </div>
             <div className="bg-primary-foreground/10 rounded-xl p-4 backdrop-blur-sm">
               <p className="text-2xl font-bold">92%</p>
-              <p className="text-sm text-primary-foreground/80">Tasa de recuperación</p>
+              <p className="text-sm text-primary-foreground/80">recovery rate </p>
             </div>
           </div>
         </div>
@@ -78,13 +78,13 @@ const Dashboard = () => {
 
       {/* Recent Activity */}
       <div className="max-w-md mx-auto px-6 mt-8">
-        <h2 className="text-xl font-bold mb-4">Actividad reciente</h2>
+        <h2 className="text-xl font-bold mb-4">Recent activity</h2>
         
         <div className="space-y-3">
           {[
-            { title: "AirPods Pro encontrados", location: "Biblioteca", time: "Hace 15 min", type: "found" },
-            { title: "Cartera negra perdida", location: "Cafetería", time: "Hace 1 hora", type: "lost" },
-            { title: "Llaves recuperadas", location: "Edificio A", time: "Hace 2 horas", type: "recovered" }
+          { title: "AirPods Pro found", location: "Library", time: "15 minutes ago", type: "found" },
+          { title: "Black wallet lost", location: "Cafeteria", time: "1 hour ago", type: "lost" },
+          { title: "Keys recovered", location: "Building A", time: "2 hours ago", type: "recovered" }
           ].map((item, index) => (
             <Card key={index} className="p-4 shadow-card border-0 transition-smooth hover:shadow-elevated cursor-pointer">
               <div className="flex items-start gap-3">

@@ -132,8 +132,8 @@ const Admin = () => {
             <div className="flex items-center gap-3">
               <img src={logoUFV} alt="UFV Logo" className="h-10" />
               <div>
-                <h1 className="text-2xl font-bold">Panel de Mediación</h1>
-                <p className="text-sm text-primary-foreground/80">Administración UFV</p>
+                <h1 className="text-2xl font-bold">Mediation pannel</h1>
+                <p className="text-sm text-primary-foreground/80">UFV Administration </p>
               </div>
             </div>
             <Button
@@ -142,7 +142,7 @@ const Admin = () => {
               onClick={() => navigate("/dashboard")}
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
-              Volver al dashboard
+              Go back to Dashboard
             </Button>
           </div>
           
@@ -153,7 +153,7 @@ const Admin = () => {
                 <Activity className="w-6 h-6" />
                 <div>
                   <p className="text-2xl font-bold">{stats.active}</p>
-                  <p className="text-sm text-primary-foreground/80">Casos activos</p>
+                  <p className="text-sm text-primary-foreground/80">Active cases</p>
                 </div>
               </div>
             </Card>
@@ -162,7 +162,7 @@ const Admin = () => {
                 <AlertTriangle className="w-6 h-6" />
                 <div>
                   <p className="text-2xl font-bold">{stats.sensitive}</p>
-                  <p className="text-sm text-primary-foreground/80">Casos sensibles</p>
+                  <p className="text-sm text-primary-foreground/80">Sensible Cases</p>
                 </div>
               </div>
             </Card>
@@ -171,7 +171,7 @@ const Admin = () => {
                 <CheckCircle className="w-6 h-6" />
                 <div>
                   <p className="text-2xl font-bold">{stats.closed}</p>
-                  <p className="text-sm text-primary-foreground/80">Casos cerrados</p>
+                  <p className="text-sm text-primary-foreground/80">Closed Cases</p>
                 </div>
               </div>
             </Card>
