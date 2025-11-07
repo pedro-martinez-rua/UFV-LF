@@ -22,7 +22,7 @@ const Messages = () => {
       name: "Carlos Martínez",
       item: "AirPods Pro",
       time: "10:30",
-      unread: 2,
+      unread: 0,
     },
     {
       id: "2",
@@ -36,6 +36,13 @@ const Messages = () => {
       name: "Pedro Sánchez",
       item: "MacBook laptop",
       time: "2 days ago",
+      unread: 0,
+    },
+    {
+      id: "4",
+      name: "Ramon Perez",
+      item: "Brown wallet",
+      time: "Today",
       unread: 0,
     },
   ];
@@ -155,8 +162,9 @@ const Messages = () => {
         </header>
 
         {/* Main content */}
-        <main className="flex-1 w-full px-4 pt-4 pb-24">
-          <div className="max-w-md mx-auto">
+        <main className="flex-1 w-full px-4 pt-4 pb-24 flex flex-col">
+          {/* Lista de chats */}
+          <div className="max-w-md mx-auto w-full">
             {chats.map((chat) => {
               const lastMessage = getLastMessageText(chat.id);
               return (
@@ -176,8 +184,12 @@ const Messages = () => {
                     </Avatar>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between mb-1">
-                        <h3 className="font-semibold text-foreground truncate">{chat.name}</h3>
-                        <span className="text-xs text-muted-foreground">{chat.time}</span>
+                        <h3 className="font-semibold text-foreground truncate">
+                          {chat.name}
+                        </h3>
+                        <span className="text-xs text-muted-foreground">
+                          {chat.time}
+                        </span>
                       </div>
                       <p className="text-sm text-muted-foreground mb-1 truncate">
                         {chat.item} · Lost item
@@ -197,8 +209,8 @@ const Messages = () => {
             })}
           </div>
 
-          {/* Footer full-width */}
-          <div className="-mx-4 mt-8">
+          {/* Footer full-width pegado abajo */}
+          <div className="-mx-4 mt-auto">
             <Footer />
           </div>
         </main>
@@ -239,8 +251,9 @@ const Messages = () => {
       </header>
 
       {/* Main content: messages + composer + footer */}
-      <main className="flex-1 w-full px-4 pt-4 pb-24">
-        <div className="max-w-md mx-auto flex flex-col h-full">
+      <main className="flex-1 w-full px-4 pt-4 pb-24 flex flex-col">
+        {/* Chat area que ocupa todo el alto disponible */}
+        <div className="max-w-md mx-auto flex flex-col flex-1 w-full">
           {/* Messages list */}
           <div className="flex-1 overflow-y-auto mb-3">
             {chatMessages.map((msg) => (
@@ -273,7 +286,7 @@ const Messages = () => {
             <div ref={messagesEndRef} />
           </div>
 
-          {/* Quick replies + input */}
+          {/* Quick replies + input pegados al footer */}
           <div className="w-full">
             <div className="flex gap-2 mb-3 overflow-x-auto scrollbar-hide">
               {quickReplies.map((reply, index) => (
@@ -315,8 +328,8 @@ const Messages = () => {
           </div>
         </div>
 
-        {/* Footer full-width */}
-        <div className="-mx-4 mt-8">
+        {/* Footer full-width justo debajo del input */}
+        <div className="-mx-4 mt-4">
           <Footer />
         </div>
       </main>
@@ -324,6 +337,7 @@ const Messages = () => {
       <BottomNav />
     </div>
   );
+
 };
 
 export default Messages;

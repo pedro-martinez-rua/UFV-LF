@@ -8,49 +8,31 @@ import { useNavigate } from "react-router-dom";
 import BottomNav from "@/components/BottomNav";
 import Footer from "@/components/Footer";
 
-const mockItems = [
-  {
-    id: 1,
-    title: "AirPods Pro",
-    description: "White AirPods Pro with charging case. Lost in the library",
-    category: "Electronics",
-    location: "Library",
-    date: "Today, 10:30",
-    image: "📱",
-  },
-  {
-    id: 2,
-    title: "Black Wallet",
-    description: "Black leather wallet with ID and cards. Last seen in the cafeteria",
-    category: "Documents",
-    location: "Cafeteria",
-    date: "Yesterday, 14:00",
-    image: "👛",
-  },
-  {
-    id: 3,
-    title: "MacBook Laptop",
-    description: 'Space gray 14" MacBook Pro with blue case',
-    category: "Electronics",
-    location: "Building A",
-    date: "2 days ago",
-    image: "💻",
-  },
-  {
-    id: 4,
-    title: "Car Keys",
-    description: "Keychain with Toyota keys and a red USB",
-    category: "Keys",
-    location: "Parking lot",
-    date: "3 days ago",
-    image: "🔑",
-  },
-];
+type LostItem = {
+  id: number;
+  title: string;
+  description: string;
+  category: string;
+  location: string;
+  date: string;
+};
+
+const getIconForCategory = (category: string): string => {
+  const value = (category || "").toLowerCase();
+
+  if (value.includes("electr")) return "📱";
+  if (value.includes("doc")) return "📄";
+  if (value.includes("llave") || value.includes("keys")) return "🔑";
+  if (value.includes("mochila") || value.includes("bag")) return "🎒";
+  if (value.includes("cartera") || value.includes("wallet")) return "👛";
+
+  return "📦";
+};
 
 const LostBoard = () => {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
-  const [items, setItems] = useState(mockItems);
+  const [items, setItems] = useState<LostItem[]>([]);
 
   useEffect(() => {
     const loadItems = async () => {
@@ -62,19 +44,17 @@ const LostBoard = () => {
 
         const data = await response.json();
 
-        if (Array.isArray(data) && data.length > 0) {
-          const mapped = data.map((item, index) => ({
-            id: item.id ?? index + 1000,
+        if (Array.isArray(data)) {
+          const mapped: LostItem[] = data.map((item: any) => ({
+            id: item.id,
             title: item.title,
             description: item.description,
             category: item.category,
             location: item.location,
             date: item.date,
-            image: "📦",
           }));
 
-          // New items first, then the static examples
-          setItems([...mapped, ...mockItems]);
+          setItems(mapped);
         }
       } catch (error) {
         console.error("Error loading lost items from API:", error);
@@ -83,6 +63,18 @@ const LostBoard = () => {
 
     loadItems();
   }, []);
+
+  const filteredItems = items.filter((item) => {
+    const q = searchQuery.toLowerCase().trim();
+    if (!q) return true;
+
+    return (
+      item.title.toLowerCase().includes(q) ||
+      item.description.toLowerCase().includes(q) ||
+      item.location.toLowerCase().includes(q) ||
+      item.category.toLowerCase().includes(q)
+    );
+  });
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -107,7 +99,11 @@ const LostBoard = () => {
                 className="pl-10 h-12"
               />
             </div>
-            <Button variant="outline" size="icon" className="h-12 w-12 flex-shrink-0">
+            <Button
+              variant="outline"
+              size="icon"
+              className="h-12 w-12 flex-shrink-0"
+            >
               <Filter className="w-5 h-5" />
             </Button>
           </div>
@@ -115,20 +111,19 @@ const LostBoard = () => {
       </header>
 
       {/* Main content */}
-      <main className="flex-1 w-full px-4 pt-4 pb-24">
+      <main className="flex-1 w-full px-4 pt-4 pb-24 flex flex-col">
         {/* Contenido centrado */}
-        <div className="max-w-md mx-auto">
-
+        <div className="max-w-md mx-auto w-full">
           {/* Results Count */}
           <div className="mb-4">
             <p className="text-sm text-muted-foreground">
-              {items.length} reported lost items
+              {filteredItems.length} reported lost items
             </p>
           </div>
 
           {/* Items List */}
           <div className="space-y-4">
-            {items.map((item) => (
+            {filteredItems.map((item) => (
               <Card
                 key={item.id}
                 className="p-4 shadow-card border-0 transition-smooth hover:shadow-elevated cursor-pointer animate-fade-in"
@@ -136,7 +131,7 @@ const LostBoard = () => {
               >
                 <div className="flex gap-4">
                   <div className="w-20 h-20 bg-primary-lighter rounded-xl flex items-center justify-center text-4xl flex-shrink-0">
-                    {item.image}
+                    {getIconForCategory(item.category)}
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="font-semibold text-foreground mb-1 truncate">
@@ -159,11 +154,17 @@ const LostBoard = () => {
                 </div>
               </Card>
             ))}
+
+            {filteredItems.length === 0 && (
+              <p className="text-sm text-muted-foreground">
+                No items found with this search.
+              </p>
+            )}
           </div>
         </div>
 
-        {/* Footer full-width dentro de main */}
-        <div className="-mx-4 mt-8">
+        {/* Footer full-width pegado abajo */}
+        <div className="-mx-4 mt-auto">
           <Footer />
         </div>
       </main>

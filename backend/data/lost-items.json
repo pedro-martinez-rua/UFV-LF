@@ -7,5 +7,23 @@
     "location": "Biblioteca",
     "date": "2025-11-01",
     "createdAt": "2025-11-07T13:07:51.251Z"
+  },
+  {
+    "id": 2,
+    "title": "Mochila negra",
+    "description": "Mochila con portátil y libretas",
+    "category": "Bags",
+    "location": "Edificio H",
+    "date": "2025-11-02",
+    "createdAt": "2025-11-07T13:10:00.000Z"
+  },
+  {
+    "id": 3,
+    "title": "asdasdasasda",
+    "description": "asdasdasdasdasdasdadads",
+    "category": "clothing",
+    "location": "building-b",
+    "date": "2025-11-07",
+    "createdAt": "2025-11-07T13:29:02.346Z"
   }
 ]

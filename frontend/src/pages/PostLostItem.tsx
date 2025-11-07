@@ -51,11 +51,11 @@ const handleSubmit = async () => {
       setStep(4);
       setTimeout(() => {
         navigate("/lost-board");
-        toast.success("¡Objeto publicado! Te notificaremos si alguien lo encuentra");
+        toast.success("Object Published!");
       }, 2000);
     } catch (error) {
       console.error(error);
-      toast.error("Ha ocurrido un error al publicar tu objeto. Inténtalo de nuevo.");
+      toast.error("There is an error publishing your item. Please try again.");
     }
   };
 
