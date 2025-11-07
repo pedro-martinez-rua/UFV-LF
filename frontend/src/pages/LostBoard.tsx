@@ -118,26 +118,6 @@ const LostBoard = () => {
       <main className="flex-1 w-full px-4 pt-4 pb-24">
         {/* Contenido centrado */}
         <div className="max-w-md mx-auto">
-          {/* Filters */}
-          <div className="mb-4">
-            <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
-              <Badge variant="default" className="px-4 py-2 cursor-pointer whitespace-nowrap">
-                All
-              </Badge>
-              <Badge variant="outline" className="px-4 py-2 cursor-pointer whitespace-nowrap">
-                📱 Electronics
-              </Badge>
-              <Badge variant="outline" className="px-4 py-2 cursor-pointer whitespace-nowrap">
-                📄 Documents
-              </Badge>
-              <Badge variant="outline" className="px-4 py-2 cursor-pointer whitespace-nowrap">
-                🔑 Keys
-              </Badge>
-              <Badge variant="outline" className="px-4 py-2 cursor-pointer whitespace-nowrap">
-                👕 Clothes
-              </Badge>
-            </div>
-          </div>
 
           {/* Results Count */}
           <div className="mb-4">

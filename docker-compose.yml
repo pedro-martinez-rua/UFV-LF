@@ -12,6 +12,9 @@ services:
       - NODE_ENV=development
     networks:
       - ufv-foundit-net
+    volumes:
+      - ./backend/data:/app/data
+
 
   frontend:
     build:
